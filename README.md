@@ -16,7 +16,9 @@ As per Kubernetes' instructions I have installed the `kubelet` and docker binari
 
 To start the cluster, you just need run vagrant.
 
-`vagrant up`
+```
+vagrant up
+```
 
 Once provisioned you can log into each box and play around with the functionality of Kubernetes.
 
@@ -35,11 +37,15 @@ May 18 16:26:26 master kubelet[10806]: I0518 16:26:26.940550   10806 kubelet_net
 
 You can then use `kubectl` to have a play with the `kube-apiserver`
 
-`kubectl get pods --all-namespaces`
+```
+kubectl get pods --all-namespaces
+```
 
 When finished you can destroy the cluster.
 
-`vagrant destroy -f`
+```
+vagrant destroy -f
+```
 
 
 ## To Do
