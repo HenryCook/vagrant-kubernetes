@@ -53,6 +53,6 @@ vagrant destroy -f
 - Fix TLS/certificate issues (currently using http)
 - Look to use API tokens for `kubelet` > `kube-apiserver` communication
 - Secure communication between `kube-apiserver` > `etcd`
-- Use kubconfig instead of `--api-servers` for the `kublet` config
+- Use `--kubeconfig` instead of `--api-servers` for the `kublet` config
 - Pods to only run nodes, and not the master
 - Access webpages e.g. `Kubernetes-dashboard` from guest on the host
