@@ -5,6 +5,8 @@ set -eu
 # Variables
 KUBELET_VERSION=1.6.3-00
 
+sudo bash -c "echo '10.1.1.10 master.kubernetes.com' >> /etc/hosts"
+
 # Update repo list and install Docker/Kubelet
 sudo apt-get update && \
      sudo apt-get install -y \

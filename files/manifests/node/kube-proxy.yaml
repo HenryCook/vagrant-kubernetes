@@ -11,7 +11,7 @@ spec:
     command:
     - /hyperkube
     - proxy
-    - --master=https://10.1.1.10:443
+    - --master=https://master.kubernetes.com:443
     - --cluster-cidr=10.100.0.0/16
     securityContext:
       privileged: true

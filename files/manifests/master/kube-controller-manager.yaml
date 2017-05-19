@@ -11,7 +11,7 @@ spec:
     command:
     - /hyperkube
     - controller-manager
-    - --master=http://127.0.0.1:8080
+    - --master=http://master.kubernetes.com:8080
     - --cluster-cidr=10.100.0.0/16
     - --allocate-node-cidrs=true
     - --leader-elect=true
