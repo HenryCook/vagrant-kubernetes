@@ -4,7 +4,8 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/xenial64"
   config.vm.provision :shell, path: "scripts/bootstrap.sh"
-  config.vm.synced_folder "files/certs", "/srv/kubernetes"
+  config.vm.synced_folder "files/certs", "/srv/kubernetes/ssl"
+  config.vm.synced_folder "files/kubeconfigs", "/etc/kubernetes/kubeconfigs"
 
   config.vm.define "master" do |master|
     master.vm.host_name = "master.kubernetes.com"

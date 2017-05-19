@@ -30,9 +30,11 @@ vagrant ssh node
 If everything has successfully provisioned (which should look like this).
 
 ```
-May 18 16:26:26 master kubelet[10806]: I0518 16:26:26.939296   10806 kuberuntime_manager.go:902] updating runtime config through cri with podcidr 10.100.0.0/24
-May 18 16:26:26 master kubelet[10806]: I0518 16:26:26.940009   10806 docker_service.go:277] docker cri received runtime config &RuntimeConfig{NetworkConfig:&NetworkConfig{PodCidr:10.100.0.0/24,},}
-May 18 16:26:26 master kubelet[10806]: I0518 16:26:26.940550   10806 kubelet_network.go:326] Setting Pod CIDR:  -> 10.100.0.0/24
+May 19 14:57:39 master kubelet[9406]: I0519 14:57:39.831847    9406 kubelet_node_status.go:77] Attempting to register node master
+May 19 14:57:39 master kubelet[9406]: I0519 14:57:39.845771    9406 kubelet_node_status.go:80] Successfully registered node master
+May 19 14:57:49 master kubelet[9406]: I0519 14:57:49.868895    9406 kuberuntime_manager.go:902] updating runtime config through cri with podcidr 10.100.0.0/24
+May 19 14:57:49 master kubelet[9406]: I0519 14:57:49.869405    9406 docker_service.go:277] docker cri received runtime config &RuntimeConfig{NetworkConfig:&NetworkConfig{PodCidr:10.100.0.0/24,},}
+May 19 14:57:49 master kubelet[9406]: I0519 14:57:49.869757    9406 kubelet_network.go:326] Setting Pod CIDR:  -> 10.100.0.0/24
 ```
 
 You can then use `kubectl` to have a play with the `kube-apiserver`
@@ -50,9 +52,9 @@ vagrant destroy -f
 
 ## To Do
 
-- Fix TLS/certificate issues (currently using http)
-- Look to use API tokens for `kubelet` > `kube-apiserver` communication
+- Fix TLS/certificate issues with `kube-apiserver` (currently using http)
 - Secure communication between `kube-apiserver` > `etcd`
-- Use `--kubeconfig` instead of `--api-servers` for the `kublet` config
 - Pods to only run on nodes, and not on the master
 - Access webpages e.g. `Kubernetes-dashboard` from guest on the host
+- ~~Use `--kubeconfig` instead of `--api-servers` for the `kublet` config~~ - **DONE**
+- ~~Upgrade etcd from 2 > 3~~ - **DONE**

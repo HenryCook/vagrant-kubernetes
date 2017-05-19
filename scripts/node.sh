@@ -19,9 +19,10 @@ Documentation=http://kubernetes.io/docs/
 
 [Service]
 ExecStart=/usr/bin/kubelet \
-  --api-servers=http://10.1.1.10:8080 \
+  --kubeconfig=/etc/kubernetes/kubeconfigs/kubelet-kubeconfig.yaml \
+  --require-kubeconfig \
+  --client-ca-file=/srv/kubernetes/ssl/ca.pem \
   --pod-manifest-path=/etc/kubernetes/manifests \
-  --client-ca-file=/srv/kubernetes/ca.crt \
   --container-runtime=docker \
   --allow-privileged=true \
   --anonymous-auth=false
