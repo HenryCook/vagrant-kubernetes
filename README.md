@@ -54,7 +54,7 @@ vagrant destroy -f
 
 - Fix TLS/certificate issues with `kube-apiserver` (currently using http)
 - Secure communication between `kube-apiserver` > `etcd`
-- Pods to only run on nodes, and not on the master
 - Access webpages e.g. `Kubernetes-dashboard` from guest on the host
 - ~~Use `--kubeconfig` instead of `--api-servers` for the `kublet` config~~ - **DONE**
 - ~~Upgrade etcd from 2 > 3~~ - **DONE**
+- ~~Pods to only run on nodes, and not on the master, via the use of labels~~ - **DONE**
