@@ -25,6 +25,7 @@ ExecStart=/usr/bin/kubelet \
   --require-kubeconfig \
   --client-ca-file=/srv/kubernetes/ssl/ca.pem \
   --pod-manifest-path=/etc/kubernetes/manifests \
+  --node-labels=dedicated=worker \
   --container-runtime=docker \
   --allow-privileged=true \
   --anonymous-auth=false
