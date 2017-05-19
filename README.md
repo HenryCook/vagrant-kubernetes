@@ -11,6 +11,12 @@ Using the docs on [kubernetes.io](kubernetes.io) I was able to piece this mishap
 
 As per Kubernetes' instructions I have installed the `kubelet` and docker binaries, and then configured all the other components via static pod manifests (see the `files/manifests` directory). This allows for a very clean and repeatable bootstrap experience. I have used the `hyperkube` Docker image that contains the `hyperkube` all-in-one binary, which means you can run all your components with just the one binary e.g. `kube-proxy`, `kube-apiserver`, `kube-controller-manager` and `kube-scheduler`.
 
+### SSL
+
+With thanks to [kelseyhightower](https://github.com/kelseyhightower) I was able to create vaid self signed certs via his repo [docker-kubernetes-tls-guide](https://github.com/kelseyhightower/docker-kubernetes-tls-guide).
+
+You just need to clone the repo, install the [CFSSL](https://github.com/cloudflare/cfssl) tool, edit the relevant json files and create your SSL certs.
+
 
 ## Usage
 
