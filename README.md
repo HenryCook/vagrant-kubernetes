@@ -54,5 +54,5 @@ vagrant destroy -f
 - Look to use API tokens for `kubelet` > `kube-apiserver` communication
 - Secure communication between `kube-apiserver` > `etcd`
 - Use `--kubeconfig` instead of `--api-servers` for the `kublet` config
-- Pods to only run nodes, and not the master
+- Pods to only run on nodes, and not on the master
 - Access webpages e.g. `Kubernetes-dashboard` from guest on the host
