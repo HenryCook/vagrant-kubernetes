@@ -52,7 +52,7 @@ vagrant destroy -f
 
 ## To Do
 
-- Fix TLS/certificate issues with `kube-apiserver` (currently using http)
+- Fix TLS/certificate issues with `kube-apiserver` (currently using http) - *The current SSL certs are valid, just need to figure out auth and permissions*
 - Secure communication between `kube-apiserver` > `etcd`
 - Access webpages e.g. `Kubernetes-dashboard` from guest on the host
 - ~~Use `--kubeconfig` instead of `--api-servers` for the `kublet` config~~ - **DONE**
