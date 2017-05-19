@@ -13,6 +13,8 @@ spec:
     - apiserver
     - --bind-address=0.0.0.0
     - --insecure-bind-address=0.0.0.0
+    - --insecure-port=8080
+    - --secure-port=6443
     - --etcd-servers=http://127.0.0.1:4001
     - --service-cluster-ip-range=10.100.0.0/16
     - --admission-control=NamespaceLifecycle,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota
@@ -20,7 +22,6 @@ spec:
     - --kubelet-client-key=/srv/kubernetes/server.key
     - --token-auth-file=/srv/kubernetes/token
     - --allow-privileged=true
-    - --secure-port=6443
     - --anonymous-auth=false
     - --storage-backend=etcd3
     resources:
@@ -34,9 +35,6 @@ spec:
       initialDelaySeconds: 15
       timeoutSeconds: 15
     ports:
-    - containerPort: 80
-      hostPort: 80
-      name: http
     - containerPort: 6443
       hostPort: 6443
       name: https
