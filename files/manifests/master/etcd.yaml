@@ -7,7 +7,7 @@ spec:
   hostNetwork: true
   containers:
   - name: etcd-container
-    image: gcr.io/google_containers/etcd:2.0.9
+    image: quay.io/coreos/etcd:v3.1.7
     command:
     - /usr/local/bin/etcd
     - --name

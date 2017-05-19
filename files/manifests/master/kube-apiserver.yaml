@@ -25,7 +25,7 @@ spec:
     - --allow-privileged=true
     - --secure-port=443
     - --anonymous-auth=false
-    - --storage-backend=etcd2
+    - --storage-backend=etcd3
     resources:
       requests:
         cpu: 100m
