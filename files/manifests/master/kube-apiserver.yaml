@@ -16,14 +16,8 @@ spec:
     - --etcd-servers=http://127.0.0.1:4001
     - --service-cluster-ip-range=10.100.0.0/16
     - --admission-control=NamespaceLifecycle,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota
-    - --client-ca-file=/srv/kubernetes/ca.crt
-    - --tls-cert-file=/srv/kubernetes/server.cert
-    - --tls-private-key-file=/srv/kubernetes/server.key
-    - --basic-auth-file=/srv/kubernetes/auth.csv
-    - --kubelet-client-certificate=/srv/kubernetes/server.cert
-    - --kubelet-client-key=/srv/kubernetes/server.key
     - --allow-privileged=true
-    - --secure-port=443
+    - --secure-port=6443
     - --anonymous-auth=false
     - --storage-backend=etcd3
     resources:
@@ -40,8 +34,8 @@ spec:
     - containerPort: 80
       hostPort: 80
       name: http
-    - containerPort: 443
-      hostPort: 443
+    - containerPort: 6443
+      hostPort: 6443
       name: https
     - containerPort: 8080
       hostPort: 8080

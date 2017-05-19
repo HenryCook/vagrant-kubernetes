@@ -14,8 +14,6 @@ spec:
     - --master=http://127.0.0.1:8080
     - --cluster-cidr=10.100.0.0/16
     - --allocate-node-cidrs=true
-    - --service-account-private-key-file=/srv/kubernetes/server.key
-    - --root-ca-file=/srv/kubernetes/ca.crt
     - --leader-elect=true
     resources:
       requests:
