@@ -20,6 +20,9 @@ spec:
     - --admission-control=NamespaceLifecycle,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota
     - --kubelet-client-certificate=/srv/kubernetes/ssl/kubelet-client.pem
     - --kubelet-client-key=/srv/kubernetes/ssl/kubelet-client-key.pem
+    - --tls-ca-file=/srv/kubernetes/ssl/ca.pem
+    - --tls-cert-file=/srv/kubernetes/ssl/kube-apiserver-server.pem
+    - --tls-private-key-file=/srv/kubernetes/ssl/kube-apiserver-server-key.pem
     - --token-auth-file=/srv/kubernetes/ssl/token
     - --allow-privileged=true
     - --anonymous-auth=false
@@ -45,55 +48,7 @@ spec:
     - mountPath: /srv/kubernetes
       name: srvkube
       readOnly: true
-    - mountPath: /etc/ssl
-      name: etcssl
-      readOnly: true
-    - mountPath: /usr/share/ssl
-      name: usrsharessl
-      readOnly: true
-    - mountPath: /var/ssl
-      name: varssl
-      readOnly: true
-    - mountPath: /usr/ssl
-      name: usrssl
-      readOnly: true
-    - mountPath: /usr/lib/ssl
-      name: usrlibssl
-      readOnly: true
-    - mountPath: /usr/local/openssl
-      name: usrlocalopenssl
-      readOnly: true
-    - mountPath: /etc/openssl
-      name: etcopenssl
-      readOnly: true
-    - mountPath: /etc/pki/tls
-      name: etcpkitls
-      readOnly: true
   volumes:
   - hostPath:
       path: /srv/kubernetes
     name: srvkube
-  - hostPath:
-      path: /etc/ssl
-    name: etcssl
-  - hostPath:
-      path: /usr/share/ssl
-    name: usrsharessl
-  - hostPath:
-      path: /var/ssl
-    name: varssl
-  - hostPath:
-      path: /usr/ssl
-    name: usrssl
-  - hostPath:
-      path: /usr/lib/ssl
-    name: usrlibssl
-  - hostPath:
-      path: /usr/local/openssl
-    name: usrlocalopenssl
-  - hostPath:
-      path: /etc/openssl
-    name: etcopenssl
-  - hostPath:
-      path: /etc/pki/tls
-    name: etcpkitls

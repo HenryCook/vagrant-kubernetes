@@ -11,15 +11,21 @@ spec:
     command:
     - /hyperkube
     - proxy
-    - --master=http://master.kubernetes.com:8080
+    - --kubeconfig=/etc/kubernetes/kubeconfigs/proxy-kubeconfig.yaml
     - --cluster-cidr=10.100.0.0/16
     securityContext:
       privileged: true
     volumeMounts:
-    - mountPath: /etc/ssl/certs
-      name: ssl-certs-host
+    - mountPath: /etc/kubernetes/kubeconfigs
+      name: etc-kubernetes-kubeconfigs
+      readOnly: true
+    - mountPath: /srv/kubernetes/ssl
+      name: srv-kube-ssl
       readOnly: true
   volumes:
   - hostPath:
-      path: /usr/share/ca-certificates
-    name: ssl-certs-host
+      path: /etc/kubernetes/kubeconfigs
+    name: etc-kubernetes-kubeconfigs
+  - hostPath:
+      path: /srv/kubernetes/ssl
+    name: srv-kube-ssl

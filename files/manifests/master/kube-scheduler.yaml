@@ -11,7 +11,7 @@ spec:
     command:
     - /hyperkube
     - scheduler
-    - --master=http://master.kubernetes.com:8080
+    - --kubeconfig=/etc/kubernetes/kubeconfigs/scheduler-kubeconfig.yaml
     - --leader-elect=true
     livenessProbe:
     resources:
@@ -24,3 +24,18 @@ spec:
         port: 10251
       initialDelaySeconds: 15
       timeoutSeconds: 15
+    volumeMounts:
+    - mountPath: /srv/kubernetes/ssl
+      name: srvkubessl
+      readOnly: true
+    - mountPath: /etc/kubernetes/kubeconfigs
+      name: etc-kubernetes-kubeconfigs
+      readOnly: true
+  hostNetwork: true
+  volumes:
+  - hostPath:
+      path: /srv/kubernetes/ssl
+    name: srvkubessl
+  - hostPath:
+      path: /etc/kubernetes/kubeconfigs
+    name: etc-kubernetes-kubeconfigs
