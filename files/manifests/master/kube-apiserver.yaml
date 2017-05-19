@@ -16,6 +16,9 @@ spec:
     - --etcd-servers=http://127.0.0.1:4001
     - --service-cluster-ip-range=10.100.0.0/16
     - --admission-control=NamespaceLifecycle,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota
+    - --kubelet-client-certificate=/srv/kubernetes/server.cert
+    - --kubelet-client-key=/srv/kubernetes/server.key
+    - --token-auth-file=/srv/kubernetes/token
     - --allow-privileged=true
     - --secure-port=6443
     - --anonymous-auth=false

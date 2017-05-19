@@ -23,6 +23,7 @@ Documentation=http://kubernetes.io/docs/
 ExecStart=/usr/bin/kubelet \
   --api-servers=http://10.1.1.10:8080 \
   --pod-manifest-path=/etc/kubernetes/manifests \
+  --client-ca-file=/srv/kubernetes/ca.crt \
   --container-runtime=docker \
   --allow-privileged=true \
   --anonymous-auth=false
