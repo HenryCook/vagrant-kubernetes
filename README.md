@@ -13,7 +13,7 @@ As per Kubernetes' instructions I have installed the `kubelet` and docker binari
 
 ### SSL
 
-With thanks to [kelseyhightower](https://github.com/kelseyhightower) I was able to create vaid self signed certs via his repo [docker-kubernetes-tls-guide](https://github.com/kelseyhightower/docker-kubernetes-tls-guide).
+With thanks to [kelseyhightower](https://github.com/kelseyhightower) I was able to create valid self signed certs via his repo [docker-kubernetes-tls-guide](https://github.com/kelseyhightower/docker-kubernetes-tls-guide).
 
 You just need to clone the repo, install the [CFSSL](https://github.com/cloudflare/cfssl) tool, edit the relevant json files and create your SSL certs.
 
@@ -30,11 +30,15 @@ See below for some links I used to help build this:
 
 ## Usage
 
+Using Vagrant I spin up 2 nodes, one master (`master.kubernetes.com`) and one worker (`node.kubernetes.com`).
+
 To start the cluster, you just need run vagrant.
 
 ```
 vagrant up
 ```
+
+If you just want to bring up a single node e.g. master, you can specify the individual node `vagrant up master`.
 
 Once provisioned you can log into each box and play around with the functionality of Kubernetes.
 
@@ -53,7 +57,7 @@ May 19 14:57:49 master kubelet[9406]: I0519 14:57:49.869405    9406 docker_servi
 May 19 14:57:49 master kubelet[9406]: I0519 14:57:49.869757    9406 kubelet_network.go:326] Setting Pod CIDR:  -> 10.100.0.0/24
 ```
 
-You can then use `kubectl` to have a play with the `kube-apiserver`
+You can then use `kubectl` to have a play with the `kube-apiserver`.
 
 ```
 kubectl get pods --all-namespaces
@@ -71,6 +75,6 @@ vagrant destroy -f
 - Fix TLS/certificate issues with `kube-apiserver` (currently using http) - *The current SSL certs are valid, just need to figure out auth and permissions*
 - Secure communication between `kube-apiserver` > `etcd`
 - Access webpages e.g. `Kubernetes-dashboard` from guest on the host
-- ~~Use `--kubeconfig` instead of `--api-servers` for the `kublet` config~~ - **DONE**
+- ~~Use `--kubeconfig` instead of `--api-servers` for the `kubelet` config~~ - **DONE**
 - ~~Upgrade etcd from 2 > 3~~ - **DONE**
 - ~~Pods to only run on nodes, and not on the master, via the use of labels~~ - **DONE**
