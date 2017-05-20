@@ -39,57 +39,14 @@ spec:
       hostPort: 4001
       name: clientport
     volumeMounts:
-        - mountPath: /var/etcd
-          name: varetcd
-        - mountPath: /etc/ssl
-          name: etcssl
-          readOnly: true
-        - mountPath: /usr/share/ssl
-          name: usrsharessl
-          readOnly: true
-        - mountPath: /var/ssl
-          name: varssl
-          readOnly: true
-        - mountPath: /usr/ssl
-          name: usrssl
-          readOnly: true
-        - mountPath: /usr/lib/ssl
-          name: usrlibssl
-          readOnly: true
-        - mountPath: /usr/local/openssl
-          name: usrlocalopenssl
-          readOnly: true
-        - mountPath: /etc/openssl
-          name: etcopenssl
-          readOnly: true
-        - mountPath: /etc/pki/tls
-          name: etcpkitls
-          readOnly: true
+      - mountPath: /var/etcd
+        name: varetcd
+      - mountPath: /srv/kubernetes/ssl
+        name: srv-kube-ssl
   volumes:
   - hostPath:
       path: /var/etcd/data
     name: varetcd
   - hostPath:
-      path: /etc/ssl
-    name: etcssl
-  - hostPath:
-      path: /usr/share/ssl
-    name: usrsharessl
-  - hostPath:
-      path: /var/ssl
-    name: varssl
-  - hostPath:
-      path: /usr/ssl
-    name: usrssl
-  - hostPath:
-      path: /usr/lib/ssl
-    name: usrlibssl
-  - hostPath:
-      path: /usr/local/openssl
-    name: usrlocalopenssl
-  - hostPath:
-      path: /etc/openssl
-    name: etcopenssl
-  - hostPath:
-      path: /etc/pki/tls
-    name: etcpkitls
+      path: /srv/kubernetes/ssl
+    name: srv-kube-ssl
