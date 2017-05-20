@@ -18,6 +18,16 @@ With thanks to [kelseyhightower](https://github.com/kelseyhightower) I was able 
 You just need to clone the repo, install the [CFSSL](https://github.com/cloudflare/cfssl) tool, edit the relevant json files and create your SSL certs.
 
 
+### Reading
+
+See below for some links I used to help build this:
+
+- [Creating a Custom Cluster from Scratch](https://kubernetes.io/docs/getting-started-guides/scratch/)
+- [Building High-Availability Clusters](https://kubernetes.io/docs/admin/high-availability/)
+- [etcd Cluster Guide](https://github.com/coreos/etcd/blob/master/Documentation/op-guide/clustering.md)
+- [Kubernetes The Hard Way ](https://github.com/kelseyhightower/kubernetes-the-hard-way)
+
+
 ## Usage
 
 To start the cluster, you just need run vagrant.
