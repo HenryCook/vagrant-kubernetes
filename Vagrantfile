@@ -7,6 +7,7 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder "files/certs", "/srv/kubernetes/ssl"
   config.vm.synced_folder "files/kubeconfigs", "/etc/kubernetes/kubeconfigs"
   config.vm.synced_folder "files/example_pods", "/etc/kubernetes/example_pods"
+  config.vm.synced_folder "files/cni", "/etc/kubernetes/cni"
 
   config.vm.define "master" do |master|
     master.vm.host_name = "master.kubernetes.com"

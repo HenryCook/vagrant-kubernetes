@@ -28,7 +28,8 @@ ExecStart=/usr/bin/kubelet \
   --node-labels=dedicated=master \
   --container-runtime=docker \
   --allow-privileged=true \
-  --anonymous-auth=false
+  --anonymous-auth=false \
+  --network-plugin=cni
 Restart=always
 StartLimitInterval=0
 RestartSec=10
@@ -37,10 +38,19 @@ RestartSec=10
 WantedBy=multi-user.target
 EOF
 
+# Pre download images
+docker pull gcr.io/google_containers/hyperkube:v1.6.3
+docker pull quay.io/coreos/etcd:v3.1.7
+
 # Reload systemctl daemon after kubelet.service change
 sudo systemctl daemon-reload
 
 # Restart kubelet service
 sudo service kubelet restart
+
+# Creating flannel network
+#echo "Sleeping for 30 seconds while we wait for Kubelet to start"
+#sleep 30
+#kubectl create -f /etc/kubernetes/cni/kube-flannel.yaml
 
 exit 0
