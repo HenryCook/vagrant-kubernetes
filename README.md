@@ -74,6 +74,7 @@ vagrant destroy -f
 
 - Secure communication between `kube-apiserver` > `etcd`
 - Access webpages e.g. `Kubernetes-dashboard` from guest on the host
+- Configure the DNS add-on
 - ~~Fix TLS/certificate issues with `kube-apiserver` (currently using http)~~ - **DONE**
 - ~~Use `--kubeconfig` instead of `--api-servers` for the `kubelet` config~~ - **DONE**
 - ~~Upgrade etcd from 2 > 3~~ - **DONE**
