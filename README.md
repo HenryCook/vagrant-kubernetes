@@ -7,7 +7,7 @@ Kubernetes Cluster from scratch in Vagrant
 
 The reason behind this was to gain a greater understanding of how Kubernetes fits together to then figure out a deployment strategy via the usual methods e.g. Salt, Userdata. As it stands it's super basic and was purely for learning so it doesn't do much past bootstrapping at the moment.
 
-Using the docs on [kubernetes.io](kubernetes.io) I was able to piece this mishapen cluster together.
+Using the docs on [kubernetes.io](kubernetes.io) I was able to piece this cluster together.
 
 As per Kubernetes' instructions I have installed the `kubelet` and docker binaries, and then configured all the other components via static pod manifests (see the `files/manifests` directory). This allows for a very clean and repeatable bootstrap experience. I have used the `hyperkube` Docker image that contains the `hyperkube` all-in-one binary, which means you can run all your components with just the one binary e.g. `kube-proxy`, `kube-apiserver`, `kube-controller-manager` and `kube-scheduler`.
 
@@ -48,6 +48,7 @@ vagrant ssh node
 ```
 
 If everything has successfully provisioned (which should look like this).
+
 ```
 May 19 14:57:39 master kubelet[9406]: I0519 14:57:39.831847    9406 kubelet_node_status.go:77] Attempting to register node master
 May 19 14:57:39 master kubelet[9406]: I0519 14:57:39.845771    9406 kubelet_node_status.go:80] Successfully registered node master
@@ -71,7 +72,7 @@ vagrant destroy -f
 
 ## To Do
 
-- Overlay network using flannel
+- Overlay network with flannel using CNI plugin
 - Secure communication between `kube-apiserver` > `etcd`
 - Access webpages e.g. `Kubernetes-dashboard` from guest on the host
 - Configure the DNS add-on
