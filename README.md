@@ -48,7 +48,6 @@ vagrant ssh node
 ```
 
 If everything has successfully provisioned (which should look like this).
-
 ```
 May 19 14:57:39 master kubelet[9406]: I0519 14:57:39.831847    9406 kubelet_node_status.go:77] Attempting to register node master
 May 19 14:57:39 master kubelet[9406]: I0519 14:57:39.845771    9406 kubelet_node_status.go:80] Successfully registered node master
@@ -72,6 +71,7 @@ vagrant destroy -f
 
 ## To Do
 
+- Overlay network using flannel
 - Secure communication between `kube-apiserver` > `etcd`
 - Access webpages e.g. `Kubernetes-dashboard` from guest on the host
 - Configure the DNS add-on
