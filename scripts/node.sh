@@ -48,8 +48,8 @@ sudo systemctl daemon-reload
 sudo service kubelet restart
 
 # Creating flannel network
-echo "Sleeping for 30 seconds while we wait for Kubelet to start"
-sleep 30
-kubectl create -f /etc/kubernetes/cni/kube-flannel.yaml
+#echo "Sleeping for 30 seconds while we wait for Kubelet to start"
+#sleep 30
+#kubectl create -f /etc/kubernetes/cni/kube-flannel.yaml
 
 exit 0
