@@ -1,4 +1,23 @@
 apiVersion: v1
+kind: Service
+metadata:
+  name: kubernetes-dashboard
+  namespace: kube-system
+  labels:
+    k8s-app: kubernetes-dashboard
+    kubernetes.io/cluster-service: "true"
+spec:
+  selector:
+    k8s-app: kubernetes-dashboard
+  ports:
+  - port: 80
+    targetPort: 9090
+
+
+---
+
+
+apiVersion: v1
 kind: ReplicationController
 metadata:
   name: kubernetes-dashboard-v1.6.0
@@ -24,6 +43,8 @@ spec:
       containers:
       - name: kubernetes-dashboard
         image: gcr.io/google_containers/kubernetes-dashboard-amd64:v1.6.0
+        args:
+          - --apiserver-host=http://master.kubernetes.com:6443
         resources:
           limits:
             cpu: 100m
