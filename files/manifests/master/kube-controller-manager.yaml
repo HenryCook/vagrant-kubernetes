@@ -18,7 +18,7 @@ spec:
     - --allocate-node-cidrs=true
     - --leader-elect=true
     - --root-ca-file=/srv/kubernetes/ssl/ca.pem
-    - --service-account-private-key-file=/srv/kubernetes/ssl/kube-apiserver-server-key.pem
+    - --service-account-private-key-file=/srv/kubernetes/ssl/kubelet-client-key.pem
     - --cluster-signing-cert-file=/srv/kubernetes/ssl/kubelet-client.pem
     - --cluster-signing-key-file=/srv/kubernetes/ssl/kubelet-client-key.pem
     resources:
