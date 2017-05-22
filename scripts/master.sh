@@ -28,7 +28,10 @@ ExecStart=/usr/bin/kubelet \
   --node-labels=dedicated=master \
   --container-runtime=docker \
   --allow-privileged=true \
-  --anonymous-auth=false
+  --anonymous-auth=false \
+  --network-plugin=kubenet \
+  --pod-cidr=10.100.0.0/16
+
 Restart=always
 StartLimitInterval=0
 RestartSec=10
