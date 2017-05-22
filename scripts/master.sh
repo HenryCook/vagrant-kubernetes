@@ -28,8 +28,7 @@ ExecStart=/usr/bin/kubelet \
   --node-labels=dedicated=master \
   --container-runtime=docker \
   --allow-privileged=true \
-  --anonymous-auth=false \
-  --network-plugin=cni
+  --anonymous-auth=false
 Restart=always
 StartLimitInterval=0
 RestartSec=10
@@ -51,6 +50,6 @@ sudo service kubelet restart
 # Creating flannel network
 #echo "Sleeping for 30 seconds while we wait for Kubelet to start"
 #sleep 30
-#kubectl create -f /etc/kubernetes/cni/kube-flannel.yaml
+#kubectl create -f /etc/kubernetes/components/network/kube-flannel.yaml
 
 exit 0
