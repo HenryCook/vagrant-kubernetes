@@ -13,19 +13,19 @@ spec:
     - --name
     - etcd0
     - --initial-advertise-peer-urls
-    - http://10.1.1.10:2380
+    - http://10.0.0.10:2380
     - --listen-peer-urls
-    - http://10.1.1.10:2380
+    - http://10.0.0.10:2380
     - --listen-client-urls
-    - http://10.1.1.10:4001,http://127.0.0.1:4001
+    - http://10.0.0.10:4001,http://127.0.0.1:4001
     - --advertise-client-urls
-    - http://10.1.1.10:4001
+    - http://10.0.0.10:4001
     - --initial-cluster-token
     - etcd-cluster-1
     - --data-dir
     - /var/etcd/data
     - --initial-cluster
-    - etcd0=http://10.1.1.10:2380
+    - etcd0=http://10.0.0.10:2380
     - --initial-cluster-state
     - new
     - --auto-tls

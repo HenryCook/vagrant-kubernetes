@@ -13,8 +13,8 @@ spec:
     - controller-manager
     - --kubeconfig=/etc/kubernetes/kubeconfigs/controller-kubeconfig.yaml
     - --allocate-node-cidrs=true
-    - --cluster-cidr=10.100.0.0/16
-    - --service-cluster-ip-range=10.10.0.0/16
+    - --cluster-cidr=10.10.0.0/16
+    - --service-cluster-ip-range=10.20.0.0/16
     - --allocate-node-cidrs=true
     - --leader-elect=true
     - --root-ca-file=/srv/kubernetes/ssl/ca.pem

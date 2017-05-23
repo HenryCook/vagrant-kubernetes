@@ -12,7 +12,7 @@ spec:
     - /hyperkube
     - proxy
     - --kubeconfig=/etc/kubernetes/kubeconfigs/proxy-kubeconfig.yaml
-    - --cluster-cidr=10.100.0.0/16
+    - --cluster-cidr=10.10.0.0/16
     securityContext:
       privileged: true
     volumeMounts:

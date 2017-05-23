@@ -30,7 +30,7 @@ ExecStart=/usr/bin/kubelet \
   --allow-privileged=true \
   --anonymous-auth=false \
   --network-plugin=kubenet \
-  --pod-cidr=10.100.0.0/16
+  --pod-cidr=10.10.0.0/16
 
 Restart=always
 StartLimitInterval=0

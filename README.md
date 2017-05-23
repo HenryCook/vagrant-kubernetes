@@ -52,9 +52,9 @@ If everything has successfully provisioned (which should look like this).
 ```
 May 19 14:57:39 master kubelet[9406]: I0519 14:57:39.831847    9406 kubelet_node_status.go:77] Attempting to register node master
 May 19 14:57:39 master kubelet[9406]: I0519 14:57:39.845771    9406 kubelet_node_status.go:80] Successfully registered node master
-May 19 14:57:49 master kubelet[9406]: I0519 14:57:49.868895    9406 kuberuntime_manager.go:902] updating runtime config through cri with podcidr 10.100.0.0/24
-May 19 14:57:49 master kubelet[9406]: I0519 14:57:49.869405    9406 docker_service.go:277] docker cri received runtime config &RuntimeConfig{NetworkConfig:&NetworkConfig{PodCidr:10.100.0.0/24,},}
-May 19 14:57:49 master kubelet[9406]: I0519 14:57:49.869757    9406 kubelet_network.go:326] Setting Pod CIDR:  -> 10.100.0.0/24
+May 19 14:57:49 master kubelet[9406]: I0519 14:57:49.868895    9406 kuberuntime_manager.go:902] updating runtime config through cri with podcidr 10.10.0.0/24
+May 19 14:57:49 master kubelet[9406]: I0519 14:57:49.869405    9406 docker_service.go:277] docker cri received runtime config &RuntimeConfig{NetworkConfig:&NetworkConfig{PodCidr:10.10.0.0/24,},}
+May 19 14:57:49 master kubelet[9406]: I0519 14:57:49.869757    9406 kubelet_network.go:326] Setting Pod CIDR:  -> 10.10.0.0/24
 ```
 
 You can then use `kubectl` to have a play with the `kube-apiserver`.
