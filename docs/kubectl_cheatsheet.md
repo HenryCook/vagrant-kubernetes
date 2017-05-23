@@ -12,3 +12,6 @@ kubectl logs -f nginx
 
 # Execute comand in pod
 kubectl exec nginx
+
+# View cluster info e.g. url for services
+kubectl cluster-info
