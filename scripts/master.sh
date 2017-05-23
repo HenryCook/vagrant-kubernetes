@@ -27,7 +27,7 @@ ExecStart=/usr/bin/kubelet \
   --pod-manifest-path=/etc/kubernetes/manifests \
   --container-runtime=docker \
   --allow-privileged=true \
-  --register-with-taints=dedicated=master:NoSchedule \
+  --register-with-taints=role=master:NoSchedule \
   --anonymous-auth=false \
   --cluster_dns=10.10.0.10 \
   --cluster_domain=cluster.local \
@@ -56,7 +56,7 @@ sudo service kubelet restart
 # Creating flannel network
 echo "Sleeping for 60 seconds while we wait for Kubelet to start to then create kube-flannel deployment"
 sleep 60
-# kubectl exec etcd-server-master --namespace=kube-system -- etcdctl set /coreos.com/network/config '{ "Network": "10.10.0.0/16" }'
+kubectl exec etcd-server-master --namespace=kube-system -- etcdctl set /coreos.com/network/config '{ "Network": "10.10.0.0/16" }'
 kubectl create -f /etc/kubernetes/components/network/kube-flannel.yaml
 
 exit 0
