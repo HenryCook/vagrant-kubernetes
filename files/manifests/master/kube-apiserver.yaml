@@ -15,6 +15,7 @@ spec:
     - --secure-port=6443
     - --etcd-servers=http://127.0.0.1:4001
     - --service-cluster-ip-range=10.20.0.0/16
+    - --kubelet-preferred-address-types=Hostname,ExternalIP
     - --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,ResourceQuota
     - --kubelet-client-certificate=/srv/kubernetes/ssl/kubelet-client.pem
     - --kubelet-client-key=/srv/kubernetes/ssl/kubelet-client-key.pem

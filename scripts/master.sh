@@ -6,6 +6,10 @@ set -eu
 KUBELET_VERSION=1.6.3-00
 KUBECTL_VERSION=1.6.3-00
 
+# Edit host files
+sudo bash -c "echo '10.0.0.10 node.kubernetes.com' >> /etc/hosts"
+sudo bash -c "echo '10.0.0.10 node' >> /etc/hosts"
+
 # Update repo list and install Docker/Kubelet
 sudo apt-get update && \
      sudo apt-get install -y \
