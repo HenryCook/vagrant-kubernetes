@@ -25,12 +25,14 @@ ExecStart=/usr/bin/kubelet \
   --require-kubeconfig \
   --client-ca-file=/srv/kubernetes/ssl/ca.pem \
   --pod-manifest-path=/etc/kubernetes/manifests \
-  --node-labels=dedicated=worker \
   --container-runtime=docker \
   --allow-privileged=true \
   --anonymous-auth=false \
-  --network-plugin=kubenet \
-  --pod-cidr=10.10.0.0/16
+  --cluster_dns=10.10.0.10 \
+  --cluster_domain=cluster.local \
+  --network-plugin=cni \
+  --cni-conf-dir=/etc/cni/net.d \
+  --cni-bin-dir=/opt/cni/bin
 
 Restart=always
 StartLimitInterval=0
