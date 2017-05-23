@@ -15,3 +15,6 @@ kubectl exec nginx
 
 # View cluster info e.g. url for services
 kubectl cluster-info
+
+# View logs for pods running in kube-system namespace
+kubectl logs etcd-server-master --namespace=kube-system

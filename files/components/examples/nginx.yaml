@@ -9,5 +9,3 @@ spec:
   - name: nginx
     image: nginx
     imagePullPolicy: IfNotPresent
-  nodeSelector:
-    dedicated: worker
