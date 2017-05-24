@@ -6,9 +6,9 @@ set -eu
 KUBELET_VERSION=1.6.3-00
 KUBECTL_VERSION=1.6.3-00
 
-# Edit host files
-sudo bash -c "echo '10.0.0.10 node.kubernetes.com' >> /etc/hosts"
-sudo bash -c "echo '10.0.0.10 node' >> /etc/hosts"
+# Edit /etc/hosts file
+sudo bash -c "echo '10.0.0.11 node.kubernetes.com' >> /etc/hosts"
+sudo bash -c "echo '10.0.0.11 node' >> /etc/hosts"
 
 # Update repo list and install Docker/Kubelet
 sudo apt-get update && \
@@ -62,5 +62,14 @@ echo "Sleeping for 60 seconds while we wait for Kubelet to start to then create 
 sleep 60
 kubectl exec etcd-server-master --namespace=kube-system -- etcdctl set /coreos.com/network/config '{ "Network": "10.10.0.0/16" }'
 kubectl create -f /etc/kubernetes/components/network/kube-flannel.yaml
+
+# service docker stop
+# source /run/flannel/subnet.env
+# ifconfig docker0 ${FLANNEL_SUBNET}
+# dockerd --bip=${FLANNEL_SUBNET} --mtu=${FLANNEL_MTU} &
+
+# Need to figure out a smarter way to populate /etc/docker/daemon.json
+# using /run/flannel/subnet.env to then restart docker with the correct $bip
+# and $mtu
 
 exit 0
