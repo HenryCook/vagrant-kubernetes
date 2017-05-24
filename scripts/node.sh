@@ -15,9 +15,6 @@ sudo apt-get update && \
      kubelet=$KUBELET_VERSION \
      docker-engine
 
-# Pre download image to speed up Kubernetes convergence
-docker pull gcr.io/google_containers/hyperkube:v1.6.3
-
 # Edit kubelet.service with correct flags
 sudo cat >/lib/systemd/system/kubelet.service << EOF
 [Unit]

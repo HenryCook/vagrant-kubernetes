@@ -17,10 +17,6 @@ sudo apt-get update && \
      kubectl=$KUBECTL_VERSION \
      docker-engine
 
-# Pre download images to speed up Kubernetes convergence
-docker pull gcr.io/google_containers/hyperkube:v1.6.3
-docker pull quay.io/coreos/etcd:v3.1.7
-
 # Edit kubelet.service with correct flags
 sudo cat >/lib/systemd/system/kubelet.service << EOF
 [Unit]
@@ -99,16 +95,13 @@ sudo service kubelet restart
 # Checking to see if etcd endpoint is up
 until curl --output /dev/null --silent --fail "http://10.0.0.10:4001/version"; do
     echo "Waiting for etcd endpoint to become available"
-    sleep 20
+    sleep 10
 done
 
 # Creating flannel network
-n=0
-until [ $n -ge 10 ]; do
-  echo "Attempting to create Flannel network"
-  kubectl exec etcd-server-master --namespace=kube-system -- etcdctl set /coreos.com/network/config '{ "Network": "10.10.0.0/16" }' && break
-  n=$[$n+1]
-  echo "The apiserver is currently unavailable (attempt $n of 10)"
+echo "Attempting to create Flannel network"
+until kubectl exec etcd-server-master --namespace=kube-system -- etcdctl set /coreos.com/network/config '{ "Network": "10.10.0.0/16" }'; do
+  echo "The kube-apiserver is currently unavailable, trying again in 10 seconds"
   sleep 10
 done
 
