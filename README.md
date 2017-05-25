@@ -72,10 +72,10 @@ vagrant destroy -f
 
 ## To Do
 
-- Overlay network with flannel using CNI plugin
 - Secure communication between `kube-apiserver` > `etcd`
 - Access webpages e.g. `Kubernetes-dashboard` from guest on the host
 - Configure the DNS add-on
+- ~~Overlay network with flannel using CNI plugin~~ - **DONE**
 - ~~Fix TLS/certificate issues with `kube-apiserver` (currently using http)~~ - **DONE**
 - ~~Use `--kubeconfig` instead of `--api-servers` for the `kubelet` config~~ - **DONE**
 - ~~Upgrade etcd from 2 > 3~~ - **DONE**
