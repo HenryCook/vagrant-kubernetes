@@ -44,6 +44,16 @@ RestartSec=10
 WantedBy=multi-user.target
 EOF
 
+# Reload systemctl daemon after kubelet.service change and restart
+sudo systemctl daemon-reload
+sudo service kubelet restart
+
+# Wait for /run/flannel/subnet.env to be created
+while ! test -f "/run/flannel/subnet.env"; do
+  echo "Waiting for flannel subnet.env to be generated"
+  sleep 10
+done
+
 # Docker to use Flannel as bridge
 sudo cat >/lib/systemd/system/docker.service <<'EOF'
 [Unit]
@@ -59,8 +69,6 @@ Type=notify
 # the default is not to use systemd for cgroups because the delegate issues still
 # exists and systemd currently does not support the cgroup feature set required
 # for containers run by docker
-Environment="FLANNEL_SUBNET=172.17.0.1/16"
-Environment="FLANNEL_MTU=1450"
 ExecStart=/usr/bin/dockerd --bip=${FLANNEL_SUBNET} --mtu=${FLANNEL_MTU} -H fd://
 ExecReload=/bin/kill -s HUP $MAINPID
 LimitNOFILE=1048576
@@ -85,18 +93,9 @@ StartLimitInterval=60s
 WantedBy=multi-user.target
 EOF
 
-# Reload systemctl daemon after kubelet.service change and restart
-sudo systemctl daemon-reload
-sudo service kubelet restart
-
-# Wait for /run/flannel/subnet.env to be created
-while ! test -f "/run/flannel/subnet.env"; do
-  echo "Waiting for flannel subnet.env to be generated"
-  sleep 10
-done
 
 echo "'/run/flannel/subnet.env' is now present, restarting Docker"
-
+sudo systemctl daemon-reload
 sudo service docker restart
 
 exit 0
