@@ -67,55 +67,7 @@ done
 # Applying kube-flannel daemon set
 kubectl create -f /etc/kubernetes/components/network/kube-flannel.yaml
 
-# Wait for /run/flannel/subnet.env to be created
-while ! test -f "/run/flannel/subnet.env"; do
-  echo "Waiting for flannel subnet.env to be generated"
-  sleep 10
-done
-
-# Docker to use Flannel as bridge
-sudo cat >/lib/systemd/system/docker.service <<'EOF'
-[Unit]
-Description=Docker Application Container Engine
-Documentation=https://docs.docker.com
-After=network-online.target docker.socket firewalld.service
-Wants=network-online.target
-Requires=docker.socket
-
-[Service]
-EnvironmentFile=/run/flannel/subnet.env
-Type=notify
-# the default is not to use systemd for cgroups because the delegate issues still
-# exists and systemd currently does not support the cgroup feature set required
-# for containers run by docker
-ExecStart=/usr/bin/dockerd --bip=${FLANNEL_SUBNET} --mtu=${FLANNEL_MTU} -H fd://
-ExecReload=/bin/kill -s HUP $MAINPID
-LimitNOFILE=1048576
-# Having non-zero Limit*s causes performance problems due to accounting overhead
-# in the kernel. We recommend using cgroups to do container-local accounting.
-LimitNPROC=infinity
-LimitCORE=infinity
-# Uncomment TasksMax if your systemd version supports it.
-# Only systemd 226 and above support this version.
-TasksMax=infinity
-TimeoutStartSec=0
-# set delegate yes so that systemd does not reset the cgroups of docker containers
-Delegate=yes
-# kill only the docker process, not all processes in the cgroup
-KillMode=process
-# restart the docker process if it exits prematurely
-Restart=on-failure
-StartLimitBurst=3
-StartLimitInterval=60s
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-# Restarting Docker to use Flannel bridge
-echo "'/run/flannel/subnet.env' is now present, restarting Docker"
-
-sudo systemctl daemon-reload
-sudo service docker restart
+# Spinning up busybox node
+kubectl create -f /etc/kubernetes/components/example/busybox.yaml
 
 exit 0
