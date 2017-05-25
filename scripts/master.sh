@@ -68,6 +68,6 @@ done
 kubectl create -f /etc/kubernetes/components/network/kube-flannel.yaml
 
 # Spinning up busybox node
-kubectl create -f /etc/kubernetes/components/example/busybox.yaml
+kubectl create -f /etc/kubernetes/components/examples/busybox.yaml
 
 exit 0
