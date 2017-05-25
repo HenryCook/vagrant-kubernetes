@@ -70,4 +70,11 @@ kubectl create -f /etc/kubernetes/components/network/kube-flannel.yaml
 # Spinning up busybox node
 kubectl create -f /etc/kubernetes/components/examples/busybox.yaml
 
+# Spinning up nginx node
+kubectl create -f /etc/kubernetes/components/examples/nginx.yaml
+
+# Flush iptable and restart docker (https://github.com/coreos/flannel/issues/115)
+sudo iptables -t nat -F
+sudo service docker restart
+
 exit 0
