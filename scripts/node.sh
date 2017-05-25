@@ -48,10 +48,4 @@ EOF
 sudo systemctl daemon-reload
 sudo service kubelet restart
 
-# Wait for /run/flannel/subnet.env to be created
-while ! test -f "/run/flannel/subnet.env"; do
-  echo "Waiting for flannel subnet.env to be generated"
-  sleep 10
-done
-
 exit 0
