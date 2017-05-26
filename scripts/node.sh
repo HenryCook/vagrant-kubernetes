@@ -48,9 +48,23 @@ EOF
 sudo systemctl daemon-reload
 sudo service kubelet restart
 
-# Flush iptable and restart docker (https://github.com/coreos/flannel/issues/115)
+# Wait for Flannel to be up
+while ! test -f "/run/flannel/subnet.env"; do
+ echo "Waiting for flannel subnet.env to be generated"
+ sleep 10
+done
+
+# Isn't very pretty but it clears all iptable rules (https://github.com/kubernetes/kubernetes/issues/20391)
+# Reason being is that pod > pod and host > pod communicated doesn't work due to flannel --ip-masq not working as intended
+sudo iptables -P INPUT ACCEPT
+sudo iptables -P FORWARD ACCEPT
+sudo iptables -P OUTPUT ACCEPT
 sudo iptables -t nat -F
-sudo ip link del docker0
+sudo iptables -t mangle -F
+sudo iptables -F
+sudo iptables -X
+
+# Restart docker to then allow communcation between hosts and pods
 sudo service docker restart
 
 exit 0
