@@ -75,6 +75,8 @@ spec:
         - --domain=cluster.local.
         - --dns-port=10053
         env:
+        - name: KUBERNETES_SERVICE_HOST
+          value: 10.0.0.10
         - name: KUBERNETES_SERVICE_PORT
           value: "6443"
         ports:

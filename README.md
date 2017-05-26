@@ -17,6 +17,7 @@ With thanks to [kelseyhightower](https://github.com/kelseyhightower) I was able 
 
 You just need to clone the repo, install the [CFSSL](https://github.com/cloudflare/cfssl) tool, edit the relevant json files and create your SSL certs.
 
+I have added the `*.json` files used to generate the SSL certs with `CFSSL` for reference which can be found in `files/certs`.
 
 ### Reading
 
