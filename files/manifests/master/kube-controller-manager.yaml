@@ -17,10 +17,10 @@ spec:
     - --service-cluster-ip-range=10.20.0.0/16
     - --allocate-node-cidrs=true
     - --leader-elect=true
-    - --root-ca-file=/srv/kubernetes/ssl/ca.pem
-    - --service-account-private-key-file=/srv/kubernetes/ssl/kubelet-client-key.pem
-    - --cluster-signing-cert-file=/srv/kubernetes/ssl/kubelet-client.pem
-    - --cluster-signing-key-file=/srv/kubernetes/ssl/kubelet-client-key.pem
+    - --root-ca-file=/etc/kubernetes/ssl/ca.pem
+    - --cluster-signing-cert-file=/etc/kubernetes/ssl/kubelet-client.pem
+    - --cluster-signing-key-file=/etc/kubernetes/ssl/kubelet-client-key.pem
+    - --service-account-private-key-file=/etc/kubernetes/ssl/kube-apiserver-server-key.pem
     resources:
       requests:
         cpu: 100m
@@ -32,23 +32,23 @@ spec:
       initialDelaySeconds: 15
       timeoutSeconds: 15
     volumeMounts:
-    - mountPath: /srv/kubernetes/ssl
+    - mountPath: /etc/kubernetes/ssl
       name: srvkubessl
       readOnly: true
     - mountPath: /etc/kubernetes/kubeconfigs
       name: etc-kubernetes-kubeconfigs
       readOnly: true
-    - mountPath: /srv/kubernetes
+    - mountPath: /etc/kubernetes
       name: srvkube
       readOnly: true
   hostNetwork: true
   volumes:
   - hostPath:
-      path: /srv/kubernetes/ssl
+      path: /etc/kubernetes/ssl
     name: srvkubessl
   - hostPath:
       path: /etc/kubernetes/kubeconfigs
     name: etc-kubernetes-kubeconfigs
   - hostPath:
-      path: /srv/kubernetes
+      path: /etc/kubernetes
     name: srvkube

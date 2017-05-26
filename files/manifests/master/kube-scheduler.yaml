@@ -25,7 +25,7 @@ spec:
       initialDelaySeconds: 15
       timeoutSeconds: 15
     volumeMounts:
-    - mountPath: /srv/kubernetes/ssl
+    - mountPath: /etc/kubernetes/ssl
       name: srvkubessl
       readOnly: true
     - mountPath: /etc/kubernetes/kubeconfigs
@@ -34,7 +34,7 @@ spec:
   hostNetwork: true
   volumes:
   - hostPath:
-      path: /srv/kubernetes/ssl
+      path: /etc/kubernetes/ssl
     name: srvkubessl
   - hostPath:
       path: /etc/kubernetes/kubeconfigs

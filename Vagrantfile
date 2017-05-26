@@ -4,9 +4,10 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/xenial64"
   config.vm.provision :shell, path: "scripts/bootstrap.sh"
-  config.vm.synced_folder "files/certs", "/srv/kubernetes/ssl"
+  config.vm.synced_folder "files/certs", "/etc/kubernetes/ssl"
   config.vm.synced_folder "files/kubeconfigs", "/etc/kubernetes/kubeconfigs"
-  config.vm.synced_folder "files/components", "/etc/kubernetes/components"
+  config.vm.synced_folder "files/addons", "/etc/kubernetes/addons"
+  config.vm.synced_folder "files/deployments", "/etc/kubernetes/deployments"
   config.vm.synced_folder "files/cni", "/etc/cni/net.d"
 
   config.vm.define "master" do |master|
