@@ -86,13 +86,6 @@ spec:
         - containerPort: 10053
           name: dns-tcp-local
           protocol: TCP
-        volumeMounts:
-        - mountPath: /etc/kubernetes/ssl
-          name: ssl-certs-kubernetes
-          readOnly: true
-        - mountPath: /etc/kubernetes/kubeconfigs
-          name: kubeconfigs-kubernetes
-          readOnly: true
       - name: dnsmasq
         image: gcr.io/google_containers/kube-dnsmasq-amd64:1.4
         livenessProbe:
@@ -135,10 +128,3 @@ spec:
         - containerPort: 8080
           protocol: TCP
       dnsPolicy: Default
-      volumes:
-      - hostPath:
-          path: /etc/kubernetes/ssl
-        name: ssl-certs-kubernetes
-      - hostPath:
-          path: /etc/kubernetes/kubeconfigs
-        name: kubeconfigs-kubernetes
