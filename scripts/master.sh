@@ -75,6 +75,7 @@ kubectl create -f /etc/kubernetes/components/examples/nginx.yaml
 
 # Flush iptable and restart docker (https://github.com/coreos/flannel/issues/115)
 sudo iptables -t nat -F
+sudo ip link del docker0
 sudo service docker restart
 
 exit 0

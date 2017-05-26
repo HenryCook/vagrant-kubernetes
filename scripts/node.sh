@@ -50,6 +50,7 @@ sudo service kubelet restart
 
 # Flush iptable and restart docker (https://github.com/coreos/flannel/issues/115)
 sudo iptables -t nat -F
+sudo ip link del docker0
 sudo service docker restart
 
 exit 0
