@@ -73,7 +73,7 @@ vagrant destroy -f
 
 ## To Do
 
-- Secure communication between `kube-apiserver` > `etcd`
+- Secure communication between `kube-apiserver` > `etcd` (There's a fix for the TLS handshake issue in version 1.7.0, but it's still in alpha)
 - Access webpages e.g. `Kubernetes-dashboard` from guest on the host
 - ~~Configure Kube Dashboard~~ - **DONE**
 - ~~Configure the DNS add-on~~ - **DONE**

@@ -3,8 +3,8 @@
 set -eu
 
 # Variables
-KUBELET_VERSION=1.6.3-00
-KUBECTL_VERSION=1.6.3-00
+KUBELET_VERSION=1.6.4-00
+KUBECTL_VERSION=1.6.4-00
 
 # Edit /etc/hosts file
 sudo bash -c "echo '10.0.0.11 node.kubernetes.com' >> /etc/hosts"
@@ -60,7 +60,7 @@ done
 # Creating flannel network
 echo "Attempting to create Flannel network"
 until kubectl exec etcd-server-master --namespace=kube-system -- etcdctl set /coreos.com/network/config '{ "Network": "10.10.0.0/16" }'; do
-  echo "The kube-apiserver is currently unavailable, trying again in 10 seconds"
+  echo "The kube-apiserver is currently unavailable"
   sleep 10
 done
 
@@ -73,7 +73,11 @@ kubectl create -f /etc/kubernetes/addons/kube-dns.yaml
 # Applying kube-dashboard service
 kubectl create -f /etc/kubernetes/addons/kube-dashboard.yaml
 
-sleep 60
+# Creating flannel network
+until kubectl get serviceaccounts default; do
+  echo "Waiting for the 'default' service account to be created"
+  sleep 10
+done
 
 # Spinning up busybox node
 kubectl create -f /etc/kubernetes/deployments/examples/busybox.yaml

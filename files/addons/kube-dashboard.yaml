@@ -20,7 +20,7 @@ spec:
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: kubernetes-dashboard-v1.6.0
+  name: kubernetes-dashboard-v1.6.1
   namespace: kube-system
   labels:
     k8s-app: kubernetes-dashboard
@@ -42,7 +42,7 @@ spec:
     spec:
       containers:
       - name: kubernetes-dashboard
-        image: gcr.io/google_containers/kubernetes-dashboard-amd64:v1.6.0
+        image: gcr.io/google_containers/kubernetes-dashboard-amd64:v1.6.1
         resources:
           limits:
             cpu: 100m

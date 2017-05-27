@@ -3,7 +3,7 @@
 set -eu
 
 # Variables
-KUBELET_VERSION=1.6.3-00
+KUBELET_VERSION=1.6.4-00
 
 # Edit /etc/hosts file
 sudo bash -c "echo '10.0.0.10 master.kubernetes.com' >> /etc/hosts"
