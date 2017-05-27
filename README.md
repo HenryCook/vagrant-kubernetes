@@ -9,7 +9,7 @@ The reason behind this was to gain a greater understanding of how Kubernetes fit
 
 Using the docs on [kubernetes.io](kubernetes.io) I was able to piece this cluster together.
 
-As per Kubernetes' instructions I have installed the `kubelet` and docker binaries, and then configured all the other components via static pod manifests (see the `files/manifests` directory). This allows for a very clean and repeatable bootstrap experience. I have used the `hyperkube` Docker image that contains the `hyperkube` all-in-one binary, which means you can run all your components with just the one binary e.g. `kube-proxy`, `kube-apiserver`, `kube-controller-manager` and `kube-scheduler`.
+As per Kubernetes' instructions I have installed the `kubelet` and docker binaries, and then configured all the other components via static pod manifests (see the `files/manifests` directory) and also via `kubectl create -f`. This allows for a very clean and repeatable bootstrap experience. I have used the `hyperkube` Docker image that contains the `hyperkube` all-in-one binary, which means you can run all your components with just the one binary e.g. `kube-proxy`, `kube-apiserver`, `kube-controller-manager` and `kube-scheduler`.
 
 ### SSL
 
@@ -31,7 +31,7 @@ See below for some links I used to help build this:
 
 ## Usage
 
-Using Vagrant I spin up 2 nodes, one master (`master.kubernetes.com`) and one worker (`node.kubernetes.com`).
+Using Vagrant I spin up 2 nodes, one master (`master.kubernetes.com (10.0.0.10)`) and one worker (`node.kubernetes.com (10.0.0.11)`).
 
 To start the cluster, you just need run vagrant.
 
@@ -61,7 +61,7 @@ May 19 14:57:49 master kubelet[9406]: I0519 14:57:49.869757    9406 kubelet_netw
 You can then use `kubectl` to have a play with the `kube-apiserver`.
 
 ```
-kubectl get pods --all-namespaces
+kubectl get all --all-namespaces -o wide
 ```
 
 When finished you can destroy the cluster.

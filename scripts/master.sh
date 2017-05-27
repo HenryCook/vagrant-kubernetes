@@ -71,7 +71,7 @@ kubectl create -f /etc/kubernetes/addons/kube-flannel.yaml
 kubectl create -f /etc/kubernetes/addons/kube-dns.yaml
 
 # Applying kube-dashboard service
-kubectl create -f /etc/kubernetes/addons/kube-dashboard.yaml
+kubectl create -f https://git.io/kube-dashboard
 
 # Creating flannel network
 until kubectl get serviceaccounts default; do
