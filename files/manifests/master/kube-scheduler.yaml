@@ -11,7 +11,7 @@ spec:
     command:
     - /hyperkube
     - scheduler
-    - --kubeconfig=/etc/kubernetes/kubeconfigs/scheduler-kubeconfig.yaml
+    - --kubeconfig=/etc/kubernetes/kubeconfigs/default-kubeconfig.yaml
     - --leader-elect=true
     livenessProbe:
     resources:

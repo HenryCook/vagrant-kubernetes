@@ -23,14 +23,14 @@ Documentation=http://kubernetes.io/docs/
 
 [Service]
 ExecStart=/usr/bin/kubelet \
-  --kubeconfig=/etc/kubernetes/kubeconfigs/kubelet-kubeconfig.yaml \
+  --kubeconfig=/etc/kubernetes/kubeconfigs/default-kubeconfig.yaml \
   --require-kubeconfig \
   --client-ca-file=/etc/kubernetes/ssl/ca.pem \
   --pod-manifest-path=/etc/kubernetes/manifests \
   --container-runtime=docker \
   --allow-privileged=true \
   --anonymous-auth=false \
-  --cluster_dns=10.10.0.10 \
+  --cluster_dns=10.20.0.10 \
   --cluster_domain=cluster.local \
   --network-plugin=cni \
   --cni-conf-dir=/etc/cni/net.d \

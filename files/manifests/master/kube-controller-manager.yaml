@@ -11,7 +11,7 @@ spec:
     command:
     - /hyperkube
     - controller-manager
-    - --kubeconfig=/etc/kubernetes/kubeconfigs/controller-kubeconfig.yaml
+    - --kubeconfig=/etc/kubernetes/kubeconfigs/default-kubeconfig.yaml
     - --allocate-node-cidrs=true
     - --cluster-cidr=10.10.0.0/16
     - --service-cluster-ip-range=10.20.0.0/16

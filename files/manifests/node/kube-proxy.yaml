@@ -11,10 +11,9 @@ spec:
     command:
     - /hyperkube
     - proxy
-    - --kubeconfig=/etc/kubernetes/kubeconfigs/proxy-kubeconfig.yaml
+    - --kubeconfig=/etc/kubernetes/kubeconfigs/default-kubeconfig.yaml
     - --cluster-cidr=10.10.0.0/16
     - --proxy-mode=iptables
-    - --masquerade-all
     securityContext:
       privileged: true
     volumeMounts:
