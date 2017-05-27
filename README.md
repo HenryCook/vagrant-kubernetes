@@ -75,7 +75,8 @@ vagrant destroy -f
 
 - Secure communication between `kube-apiserver` > `etcd`
 - Access webpages e.g. `Kubernetes-dashboard` from guest on the host
-- Configure the DNS add-on
+- ~~Configure Kube Dashboard~~ - **DONE**
+- ~~Configure the DNS add-on~~ - **DONE**
 - ~~Overlay network with flannel using CNI plugin~~ - **DONE**
 - ~~Fix TLS/certificate issues with `kube-apiserver` (currently using http)~~ - **DONE**
 - ~~Use `--kubeconfig` instead of `--api-servers` for the `kubelet` config~~ - **DONE**

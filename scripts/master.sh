@@ -67,6 +67,12 @@ done
 # Applying kube-flannel daemon set
 kubectl create -f /etc/kubernetes/addons/kube-flannel.yaml
 
+# Applying kube-dns service
+kubectl create -f /etc/kubernetes/addons/kube-dns.yaml
+
+# Applying kube-dashboard service
+kubectl create -f /etc/kubernetes/addons/kube-dashboard.yaml
+
 sleep 60
 
 # Spinning up busybox node
@@ -81,11 +87,8 @@ while ! test -f "/run/flannel/subnet.env"; do
  sleep 10
 done
 
-# Isn't very pretty but this is a very heavy handed way of modifying the iptables rules (https://github.com/kubernetes/kubernetes/issues/20391)
+# Isn't very pretty as this is a very heavy handed way of modifying the iptables rules (https://github.com/kubernetes/kubernetes/issues/20391)
 # Reason being is that pod > pod and host > pod communicated doesn't work due to flannel --ip-masq not working as intended
 sudo iptables -P FORWARD ACCEPT
-
-# Restart docker to then allow communcation between hosts and pods
-sudo service docker restart
 
 exit 0
