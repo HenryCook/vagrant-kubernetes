@@ -33,7 +33,7 @@ ExecStart=/usr/bin/kubelet \
   --allow-privileged=true \
   --register-with-taints=role=master:NoSchedule \
   --anonymous-auth=false \
-  --cluster_dns=10.10.0.10 \
+  --cluster_dns=10.20.0.10 \
   --cluster_domain=cluster.local \
   --network-plugin=cni \
   --cni-conf-dir=/etc/cni/net.d \

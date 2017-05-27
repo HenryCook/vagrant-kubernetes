@@ -38,9 +38,6 @@ spec:
     - mountPath: /etc/kubernetes/kubeconfigs
       name: etc-kubernetes-kubeconfigs
       readOnly: true
-    - mountPath: /etc/kubernetes
-      name: srvkube
-      readOnly: true
   hostNetwork: true
   volumes:
   - hostPath:
@@ -49,6 +46,3 @@ spec:
   - hostPath:
       path: /etc/kubernetes/kubeconfigs
     name: etc-kubernetes-kubeconfigs
-  - hostPath:
-      path: /etc/kubernetes
-    name: srvkube

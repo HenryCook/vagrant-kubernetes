@@ -11,8 +11,8 @@ spec:
     command:
     - /hyperkube
     - apiserver
+    - --advertise-address=10.0.0.10
     - --bind-address=0.0.0.0
-    - --secure-port=6443
     - --etcd-servers=http://127.0.0.1:4001
     - --service-cluster-ip-range=10.20.0.0/16
     - --kubelet-preferred-address-types=Hostname,ExternalIP
@@ -47,10 +47,16 @@ spec:
       hostPort: 8080
       name: local
     volumeMounts:
-    - mountPath: /etc/kubernetes
-      name: srvkube
+    - mountPath: /etc/kubernetes/ssl
+      name: srvkubessl
+      readOnly: true
+    - mountPath: /etc/kubernetes/kubeconfigs
+      name: etc-kubernetes-kubeconfigs
       readOnly: true
   volumes:
   - hostPath:
-      path: /etc/kubernetes
-    name: srvkube
+      path: /etc/kubernetes/ssl
+    name: srvkubessl
+  - hostPath:
+      path: /etc/kubernetes/kubeconfigs
+    name: etc-kubernetes-kubeconfigs

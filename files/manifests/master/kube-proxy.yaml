@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kube-proxy
+  namespace: kube-system
+spec:
+  hostNetwork: true
+  containers:
+  - name: kube-proxy
+    image: gcr.io/google_containers/hyperkube:v1.6.3
+    command:
+    - /hyperkube
+    - proxy
+    - --kubeconfig=/etc/kubernetes/kubeconfigs/default-kubeconfig.yaml
+    - --cluster-cidr=10.10.0.0/16
+    - --proxy-mode=iptables
+    securityContext:
+      privileged: true
+    volumeMounts:
+    - mountPath: /etc/kubernetes/kubeconfigs
+      name: etc-kubernetes-kubeconfigs
+      readOnly: true
+    - mountPath: /etc/kubernetes/ssl
+      name: srv-kube-ssl
+      readOnly: true
+  volumes:
+  - hostPath:
+      path: /etc/kubernetes/kubeconfigs
+    name: etc-kubernetes-kubeconfigs
+  - hostPath:
+      path: /etc/kubernetes/ssl
+    name: srv-kube-ssl
