@@ -64,6 +64,12 @@ You can then use `kubectl` to have a play with the `kube-apiserver`.
 kubectl get all --all-namespaces -o wide
 ```
 
+The Kubernetes Dashboard will be available when the cluster has successfully converged. The web page will require authentication which is username: `admin` and password: `password`.
+
+```
+https://localhost:6443/ui
+```
+
 When finished you can destroy the cluster.
 
 ```
@@ -74,7 +80,7 @@ vagrant destroy -f
 ## To Do
 
 - Secure communication between `kube-apiserver` > `etcd` (There's a fix for the TLS handshake issue in version 1.7.0, but it's still in alpha)
-- Access webpages e.g. `Kubernetes-dashboard` from guest on the host
+- ~~Access webpages e.g. `Kubernetes-dashboard` from guest on the host~~ - **DONE**
 - ~~Configure Kube Dashboard~~ - **DONE**
 - ~~Configure the DNS add-on~~ - **DONE**
 - ~~Overlay network with flannel using CNI plugin~~ - **DONE**

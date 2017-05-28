@@ -14,6 +14,7 @@ Vagrant.configure("2") do |config|
     master.vm.host_name = "master.kubernetes.com"
     master.vm.synced_folder "files/manifests/master", "/etc/kubernetes/manifests"
     master.vm.network :private_network, ip: "10.0.0.10"
+    master.vm.network "forwarded_port", guest: 6443, host: 6443, auto_correct: true
     master.vm.provision :shell, path: "scripts/master.sh"
   end
 
