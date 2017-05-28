@@ -70,7 +70,7 @@ The Kubernetes Dashboard will be available when the cluster has successfully con
 https://localhost:6443/ui
 ```
 
-When finished you can destroy the cluster.
+When finished, you can destroy the cluster.
 
 ```
 vagrant destroy -f
@@ -87,4 +87,4 @@ vagrant destroy -f
 - ~~Fix TLS/certificate issues with `kube-apiserver` (currently using http)~~ - **DONE**
 - ~~Use `--kubeconfig` instead of `--api-servers` for the `kubelet` config~~ - **DONE**
 - ~~Upgrade etcd from 2 > 3~~ - **DONE**
-- ~~Pods to only run on nodes, and not on the master, via the use of labels~~ - **DONE**
+- ~~Pods to only run on nodes, and not on the master, via the use of taints~~ - **DONE**
