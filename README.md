@@ -58,7 +58,7 @@ vagrant ssh master
 vagrant ssh node
 ```
 
-If everything has successfully provisioned (which should look like this).
+If everything has successfully provisioned, when you run `journaltcl -u kubelet.service` the logs should look like this.
 
 ```
 May 19 14:57:39 master kubelet[9406]: I0519 14:57:39.831847    9406 kubelet_node_status.go:77] Attempting to register node master
@@ -82,6 +82,16 @@ When finished, you can destroy the cluster.
 
 ```
 vagrant destroy -f
+```
+
+## Troubleshooting
+
+### 503 Service unavailable
+
+If you recieve this error when fully provisioned, make sure both nodes are operational e.g. ssh or ping. If not you may need to restart the node, this is easily done via Vagrant.
+
+```
+vagrant reload <node>
 ```
 
 
