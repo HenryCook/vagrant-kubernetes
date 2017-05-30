@@ -55,7 +55,7 @@ done
 
 # Creating flannel network
 echo "Attempting to create Flannel network"
-until kubectl exec $(kubectl get pods --all-namespaces | awk '/etcd-server/ {print $2}') --namespace=kube-system -- etcdctl set /coreos.com/network/config '{ "Network": "10.10.0.0/16" }'; do
+until kubectl exec $(kubectl get pods --all-namespaces | awk '/etcd-server/ {print $2;exit;}') --namespace=kube-system -- etcdctl set /coreos.com/network/config '{ "Network": "10.10.0.0/16" }'; do
   echo "The kube-apiserver is currently unavailable"
   sleep 10
 done
