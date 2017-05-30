@@ -41,7 +41,7 @@ To run this you will need installed:
 
 ## Usage
 
-Using Vagrant I spin up 2 nodes, one master (`master.kubernetes.com (10.0.0.10)`) and one worker (`node.kubernetes.com (10.0.0.11)`).
+Using Vagrant I spin up 2 nodes, one master (`master.kubernetes.com (10.0.0.10)`) and one worker (`worker.kubernetes.com (10.0.0.11)`).
 
 To start the cluster, you just need run vagrant.
 
@@ -55,7 +55,7 @@ Once provisioned you can log into each box and play around with the functionalit
 
 ```
 vagrant ssh master
-vagrant ssh node
+vagrant ssh worker
 ```
 
 If everything has successfully provisioned, when you run `journaltcl -u kubelet.service` the logs should look like this.

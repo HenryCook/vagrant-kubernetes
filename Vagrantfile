@@ -6,6 +6,9 @@ Vagrant.require_version ">= 1.9.3"
 MASTER_IP="10.0.0.10"
 WORKER_IP="10.0.0.11"
 
+MASTER_HOSTNAME="master.kubernetes.com"
+WORKER_HOSTNAME="worker.kubernetes.com"
+
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/xenial64"
   config.vm.provision :shell, path: "scripts/bootstrap.sh"
@@ -16,18 +19,18 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder "files/cni", "/etc/cni/net.d"
 
   config.vm.define "master" do |master|
-    master.vm.host_name = "master.kubernetes.com"
+    master.vm.host_name = MASTER_HOSTNAME
     master.vm.synced_folder "files/manifests/master", "/etc/kubernetes/manifests"
     master.vm.network :private_network, ip: MASTER_IP
     master.vm.network "forwarded_port", guest: 6443, host: 6443, auto_correct: true
     master.vm.provision :shell, path: "scripts/master.sh"
   end
 
-  config.vm.define "node" do |node|
-   node.vm.host_name = "node.kubernetes.com"
-   node.vm.synced_folder "files/manifests/node", "/etc/kubernetes/manifests"
-   node.vm.network :private_network, ip: WORKER_IP
-   node.vm.provision :shell, path: "scripts/node.sh"
+  config.vm.define "worker" do |worker|
+   worker.vm.host_name = WORKER_HOSTNAME
+   worker.vm.synced_folder "files/manifests/worker", "/etc/kubernetes/manifests"
+   worker.vm.network :private_network, ip: WORKER_IP
+   worker.vm.provision :shell, path: "scripts/worker.sh"
   end
 
 end

@@ -6,10 +6,6 @@ set -eu
 KUBELET_VERSION=1.6.4-00
 KUBECTL_VERSION=1.6.4-00
 
-# Edit /etc/hosts file
-sudo bash -c "echo '10.0.0.11 node.kubernetes.com' >> /etc/hosts"
-sudo bash -c "echo '10.0.0.11 node' >> /etc/hosts"
-
 # Update repo list and install Docker/Kubelet
 sudo apt-get update && \
      sudo apt-get install -y \
@@ -52,7 +48,7 @@ sudo systemctl daemon-reload
 sudo service kubelet restart
 
 # Checking to see if etcd endpoint is up
-until curl --output /dev/null --silent --fail "http://10.0.0.10:4001/version"; do
+until curl --output /dev/null --silent --fail "http://127.0.0.1:4001/version"; do
     echo "Waiting for etcd endpoint to become available"
     sleep 10
 done
