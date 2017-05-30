@@ -11,6 +11,7 @@ Using the docs on [kubernetes.io](kubernetes.io) I was able to piece this cluste
 
 As per Kubernetes' instructions I have installed the `kubelet` and docker binaries, and then configured all the other components via static pod manifests (see the `files/manifests` directory) and also via `kubectl create -f`. This allows for a very clean and repeatable bootstrap experience. I have used the `hyperkube` Docker image that contains the `hyperkube` all-in-one binary, which means you can run all your components with just the one binary e.g. `kube-proxy`, `kube-apiserver`, `kube-controller-manager` and `kube-scheduler`.
 
+
 ### SSL
 
 With thanks to [kelseyhightower](https://github.com/kelseyhightower) I was able to create valid self signed certs via his repo [docker-kubernetes-tls-guide](https://github.com/kelseyhightower/docker-kubernetes-tls-guide).
@@ -18,6 +19,7 @@ With thanks to [kelseyhightower](https://github.com/kelseyhightower) I was able 
 You just need to clone the repo, install the [CFSSL](https://github.com/cloudflare/cfssl) tool, edit the relevant json files and create your SSL certs.
 
 I have added the `*.json` files used to generate the SSL certs with `CFSSL` for reference which can be found in `files/certs`.
+
 
 ### Reading
 
@@ -27,6 +29,14 @@ See below for some links I used to help build this:
 - [Building High-Availability Clusters](https://kubernetes.io/docs/admin/high-availability/)
 - [etcd Cluster Guide](https://github.com/coreos/etcd/blob/master/Documentation/op-guide/clustering.md)
 - [Kubernetes The Hard Way ](https://github.com/kelseyhightower/kubernetes-the-hard-way)
+
+
+## Prerequisistes
+
+To run this you will need installed:
+
+- [Vagrant](https://www.vagrantup.com/)
+- [Virtualbox](https://www.virtualbox.org/)
 
 
 ## Usage
@@ -66,7 +76,7 @@ kubectl get all --all-namespaces -o wide
 
 The Kubernetes Dashboard will be available when the cluster has successfully converged. The web page will require authentication which is username: `admin` and password: `password`. Use the link below to access the dashboard:
 
-[https://localhost:6443/ui](https://localhost:6443/ui)
+**[https://localhost:6443/ui](https://localhost:6443/ui)**
 
 When finished, you can destroy the cluster.
 
