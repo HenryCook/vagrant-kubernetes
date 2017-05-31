@@ -55,7 +55,7 @@ while ! test -f "/run/flannel/subnet.env"; do
 done
 
 # Isn't very pretty as this is a very heavy handed way of modifying the iptables rules (https://github.com/kubernetes/kubernetes/issues/20391)
-# Reason being is that pod > pod and host > pod communicated doesn't work due to flannel --ip-masq not working as intended
+# Reason being is that pod > pod and host > pod communicated doesn't work as intended
 sudo iptables -P FORWARD ACCEPT
 
 exit 0
