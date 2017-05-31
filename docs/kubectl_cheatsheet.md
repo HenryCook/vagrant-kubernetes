@@ -36,5 +36,5 @@ kubectl run -i --tty busybox --image=busybox --generator="run-pod/v1"
 #### Get all resources with different types
 kubectl get all --all-namespaces -o wide
 
-#### Testing auth
+#### Testing auth (token has been removed)
 curl -sSk -H "Authorization: Bearer <auth_token>" https://master.kubernetes.com:6443/api/v1

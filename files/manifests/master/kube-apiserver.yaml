@@ -12,7 +12,6 @@ spec:
     - /hyperkube
     - apiserver
     - --advertise-address=10.0.0.10
-    - --bind-address=0.0.0.0
     - --etcd-servers=http://127.0.0.1:4001
     - --service-cluster-ip-range=10.20.0.0/16
     - --kubelet-preferred-address-types=Hostname,ExternalIP
@@ -25,7 +24,6 @@ spec:
     - --tls-cert-file=/etc/kubernetes/ssl/kube-apiserver-server.pem
     - --tls-private-key-file=/etc/kubernetes/ssl/kube-apiserver-server-key.pem
     - --service-account-key-file=/etc/kubernetes/ssl/kube-apiserver-server-key.pem
-    - --token-auth-file=/etc/kubernetes/ssl/token.csv
     - --basic-auth-file=/etc/kubernetes/ssl/basic_auth.csv
     - --allow-privileged=true
     - --anonymous-auth=false

@@ -88,7 +88,7 @@ while ! test -f "/run/flannel/subnet.env"; do
 done
 
 # Isn't very pretty as this is a very heavy handed way of modifying the iptables rules:
-# (https://github.com/kubernetes/kubernetes/issues/20391)
+# (https://github.com/coreos/flannel/issues/603)
 # Reason being is that pod > pod and host > pod communicated doesn't work as intended,
 # not sure if this is a Vagrant specific issue but DO NOT RECREATE THIS IN PRODUCTION.
 sudo iptables -P FORWARD ACCEPT
