@@ -87,8 +87,10 @@ while ! test -f "/run/flannel/subnet.env"; do
  sleep 10
 done
 
-# Isn't very pretty as this is a very heavy handed way of modifying the iptables rules (https://github.com/kubernetes/kubernetes/issues/20391)
-# Reason being is that pod > pod and host > pod communicated doesn't work as intended
+# Isn't very pretty as this is a very heavy handed way of modifying the iptables rules:
+# (https://github.com/kubernetes/kubernetes/issues/20391)
+# Reason being is that pod > pod and host > pod communicated doesn't work as intended,
+# not sure if this is a Vagrant specific issue but DO NOT RECREATE THIS IN PRODUCTION.
 sudo iptables -P FORWARD ACCEPT
 
 exit 0
