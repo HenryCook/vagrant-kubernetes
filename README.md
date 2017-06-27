@@ -31,7 +31,7 @@ See below for some links I used to help build this:
 - [Kubernetes The Hard Way ](https://github.com/kelseyhightower/kubernetes-the-hard-way)
 
 
-## Prerequisistes
+## Prerequisites
 
 To run this you will need installed:
 
