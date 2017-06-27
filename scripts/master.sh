@@ -69,6 +69,9 @@ kubectl create -f /etc/kubernetes/addons/kube-dns.yaml
 # Applying kube-dashboard service
 kubectl create -f https://git.io/kube-dashboard
 
+# Applying node-exporter daemon set
+kubectl create -f /etc/kubernetes/addons/node_exporter.yaml
+
 # Creating flannel network
 until kubectl get serviceaccounts default; do
   echo "Waiting for the 'default' service account to be created"
