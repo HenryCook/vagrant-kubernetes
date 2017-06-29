@@ -98,6 +98,8 @@ vagrant reload <node>
 ## To Do
 
 - Secure communication between `kube-apiserver` > `etcd` (There's a fix for the TLS handshake issue in version 1.7.0, but it's still in alpha)
+- Manage host files via vagrant-hosts instead of manually editing them on each machine
+- Configure Prometheus and Grafana for monitoring
 - ~~Access webpages e.g. `Kubernetes-dashboard` from guest on the host~~ - **DONE**
 - ~~Configure Kube Dashboard~~ - **DONE**
 - ~~Configure the DNS add-on~~ - **DONE**
