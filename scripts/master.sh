@@ -3,8 +3,8 @@
 set -eu
 
 # Variables
-KUBELET_VERSION=1.6.4-00
-KUBECTL_VERSION=1.6.4-00
+KUBELET_VERSION=1.7.0-00
+KUBECTL_VERSION=1.7.0-00
 
 # Update repo list and install Docker/Kubelet
 sudo apt-get update && \
