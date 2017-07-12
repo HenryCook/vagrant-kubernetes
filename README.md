@@ -77,9 +77,11 @@ kubectl get all --all-namespaces -o wide
 The Kubernetes Dashboard will be available when the cluster has successfully converged. The web page will require authentication which is username: `admin` and password: `password`. Use the link below to access the dashboard:
 
 
-|     Service    	|            URL            	|
-|:--------------:	|:-------------------------:	|
-| Kube Dashboard 	| https://localhost:6443/ui 	|
+|         Service        |              URL              |
+|:----------------------:|:-----------------------------:|
+| Kube Dashboard         | https://localhost:6443/ui     |
+| Node Exporter          | http://localhost:9100/metrics |
+| KubeKube State Metrics | http://localhost:9090/metrics |
 
 When finished, you can destroy the cluster.
 

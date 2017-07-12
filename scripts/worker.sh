@@ -30,6 +30,7 @@ ExecStart=/usr/bin/kubelet \
   --container-runtime=docker \
   --allow-privileged=true \
   --anonymous-auth=false \
+  --node-labels=role=worker \
   --cluster_dns=10.20.0.10 \
   --cluster_domain=cluster.local \
   --network-plugin=cni \

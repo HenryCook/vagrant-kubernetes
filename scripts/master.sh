@@ -30,6 +30,7 @@ ExecStart=/usr/bin/kubelet \
   --register-with-taints=role=master:NoSchedule \
   --anonymous-auth=false \
   --cluster_dns=10.20.0.10 \
+  --node-labels=role=master \
   --cluster_domain=cluster.local \
   --network-plugin=cni \
   --cni-conf-dir=/etc/cni/net.d \
@@ -71,6 +72,9 @@ kubectl create -f https://git.io/kube-dashboard
 
 # Applying node-exporter daemon set
 kubectl create -f /etc/kubernetes/addons/node_exporter.yaml
+
+# Applying kube-state-metrics daemon set
+kubectl create -f /etc/kubernetes/addons/kube-state-metrics.yaml
 
 # Creating flannel network
 until kubectl get serviceaccounts default; do
