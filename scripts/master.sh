@@ -3,8 +3,8 @@
 set -eu
 
 # Variables
-KUBELET_VERSION=1.7.0-00
-KUBECTL_VERSION=1.7.0-00
+KUBELET_VERSION=1.7.5-00
+KUBECTL_VERSION=1.7.5-00
 
 # Update repo list and install Docker/Kubelet
 sudo apt-get update && \
@@ -68,7 +68,7 @@ kubectl create -f /etc/kubernetes/addons/kube-flannel.yaml
 kubectl create -f /etc/kubernetes/addons/kube-dns.yaml
 
 # Applying kube-dashboard service
-kubectl create -f https://git.io/kube-dashboard
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
 
 # Applying node-exporter daemon set
 kubectl create -f /etc/kubernetes/addons/node_exporter.yaml

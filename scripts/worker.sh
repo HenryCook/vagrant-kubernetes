@@ -3,7 +3,7 @@
 set -eu
 
 # Variables
-KUBELET_VERSION=1.7.0-00
+KUBELET_VERSION=1.7.5-00
 
 # Edit /etc/hosts file
 sudo bash -c "echo '10.0.0.10 master.kubernetes.com' >> /etc/hosts"
@@ -25,7 +25,6 @@ Documentation=http://kubernetes.io/docs/
 ExecStart=/usr/bin/kubelet \
   --kubeconfig=/etc/kubernetes/kubeconfigs/default-kubeconfig.yaml \
   --require-kubeconfig \
-  --client-ca-file=/etc/kubernetes/ssl/ca.pem \
   --pod-manifest-path=/etc/kubernetes/manifests \
   --container-runtime=docker \
   --allow-privileged=true \

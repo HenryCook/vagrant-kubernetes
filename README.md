@@ -81,7 +81,7 @@ The Kubernetes Dashboard will be available when the cluster has successfully con
 |:----------------------:|:-----------------------------:|
 | Kube Dashboard         | https://localhost:6443/ui     |
 | Node Exporter          | http://localhost:9100/metrics |
-| KubeKube State Metrics | http://localhost:9090/metrics |
+| Kube State Metrics     | http://localhost:9090/metrics |
 
 When finished, you can destroy the cluster.
 
