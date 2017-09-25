@@ -14,11 +14,10 @@ spec:
     - --advertise-address=10.0.0.10
     - --etcd-servers=http://127.0.0.1:4001
     - --service-cluster-ip-range=10.20.0.0/16
+    - --runtime-config=authorization.k8s.io/v1beta1=true
     - --kubelet-preferred-address-types=Hostname,ExternalIP
     - --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,ResourceQuota
     - --cert-dir=/var/kubernetes/ssl
-    - --kubelet-client-certificate=/etc/kubernetes/ssl/kubelet-client.pem
-    - --kubelet-client-key=/etc/kubernetes/ssl/kubelet-client-key.pem
     - --client-ca-file=/etc/kubernetes/ssl/ca.pem
     - --tls-ca-file=/etc/kubernetes/ssl/ca.pem
     - --tls-cert-file=/etc/kubernetes/ssl/kube-apiserver-server.pem

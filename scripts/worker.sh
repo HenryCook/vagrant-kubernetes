@@ -25,6 +25,8 @@ Documentation=http://kubernetes.io/docs/
 ExecStart=/usr/bin/kubelet \
   --kubeconfig=/etc/kubernetes/kubeconfigs/default-kubeconfig.yaml \
   --require-kubeconfig \
+  --authentication-token-webhook \
+  --authorization-mode=Webhook \
   --pod-manifest-path=/etc/kubernetes/manifests \
   --container-runtime=docker \
   --allow-privileged=true \
