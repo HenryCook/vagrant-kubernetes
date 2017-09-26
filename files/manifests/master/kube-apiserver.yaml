@@ -18,6 +18,8 @@ spec:
     - --kubelet-preferred-address-types=Hostname,ExternalIP
     - --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,ResourceQuota
     - --cert-dir=/var/kubernetes/ssl
+    - --kubelet-client-certificate=/etc/kubernetes/ssl/kubelet-client.pem
+    - --kubelet-client-key=/etc/kubernetes/ssl/kubelet-client-key.pem
     - --client-ca-file=/etc/kubernetes/ssl/ca.pem
     - --tls-ca-file=/etc/kubernetes/ssl/ca.pem
     - --tls-cert-file=/etc/kubernetes/ssl/kube-apiserver-server.pem
